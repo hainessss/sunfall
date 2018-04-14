@@ -88,7 +88,7 @@ const makeGeocodeRequest = (lat, lng) => {
       geocodedCoordinate.county = county;
     }
 
-    console.log('Coordinate added to list:', geocodedCoordinate);
+    console.log('LOG: Coordinate added to list:', geocodedCoordinate);
     transformedCoordinateList.push(geocodedCoordinate);
 
     return geocodedCoordinate;
@@ -104,4 +104,10 @@ const transformCoordinateList = coordinateList => {
   }
 };
 
+const sendCoordinateListToMLServer = () => {
+  // TODO: Send coordinate list to ML server.
+  console.log('LOG: Sending coordinate list to ML server', transformedCoordinateList.length);
+}
+
 module.exports.transformCoordinateList = transformCoordinateList;
+module.exports.sendCoordinateListToMLServer = sendCoordinateListToMLServer;

@@ -4,6 +4,7 @@ import styles from './index.css';
 import { withScriptjs, GoogleMap, Marker, withGoogleMap } from "react-google-maps";
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 const { SearchBox } = require("react-google-maps/lib/components/places/SearchBox");
+const { sendCoordinateListToMLServer } = require('../../utils/coordinateTransformer');
 
 const Map = withScriptjs(withGoogleMap(({markers, onClick, onSearchBoxMounted, onPlacesChanged, center}) => {
     return (
@@ -42,7 +43,7 @@ const Map = withScriptjs(withGoogleMap(({markers, onClick, onSearchBoxMounted, o
                     })
                 }
             </GoogleMap>
-            <FloatingActionButton className={styles.action} backgroundColor="#CD3800" />
+            <FloatingActionButton className={styles.action} onClick={sendCoordinateListToMLServer} backgroundColor="#CD3800" />
         </div>
     );
 }));

@@ -59,7 +59,6 @@ class MapContainer extends React.Component {
         }
 
         // Transforming a single coordinate
-        // TODO: Add to a list and transform only when full list is sent.
         transformCoordinateList([coordinate]);
 
         this.setState({
