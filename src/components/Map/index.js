@@ -7,10 +7,10 @@ const { SearchBox } = require("react-google-maps/lib/components/places/SearchBox
 const Map = withScriptjs(withGoogleMap(({markers, onClick, onSearchBoxMounted, onPlacesChanged}) => {
     return (
         <GoogleMap
-            defaultZoom={8}
-            defaultCenter={{ lat: -34.397, lng: 150.644 }}
+            defaultZoom={19}
+            defaultCenter={{ lat: 37.445843, lng: -122.131141 }}
             onClick={onClick}
-        >   
+        >
                 <SearchBox
                     ref={onSearchBoxMounted}
                     controlPosition={google.maps.ControlPosition.TOP_LEFT}
@@ -34,7 +34,7 @@ const Map = withScriptjs(withGoogleMap(({markers, onClick, onSearchBoxMounted, o
                         }}
                     />
                     </SearchBox>
-            <Marker position={{ lat: -34.397, lng: 150.644 }} />
+            <Marker position={{ lat: 37.445843, lng: -122.131141 }} />
             {
                 markers.map((marker, index) => {
                     return <Marker key={index} position={{ lat: marker.lat, lng: marker.lng }} />
