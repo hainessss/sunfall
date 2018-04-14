@@ -40,11 +40,11 @@ const Map = withScriptjs(withGoogleMap(({markers, onClick, onSearchBoxMounted, o
                 <Marker position={{ lat: -34.397, lng: 150.644 }} />
                 {
                     markers.map((marker, index) => {
-                        return <div>
-                            <Marker key={index} onclick={() => {console.log('index' , index)}} position={{ lat: marker.lat, lng: marker.lng }}>
-
-                            </Marker>
-                        </div>
+                        return <Marker key={index} onclick={() => {console.log('index' , index)}} position={{ lat: marker.lat, lng: marker.lng }}>
+                            <InfoWindow>
+                                <div>asdf</div>
+                            </InfoWindow>
+                        </Marker>
                     })
                 }
             </GoogleMap>
