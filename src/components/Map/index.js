@@ -9,10 +9,10 @@ const Map = withScriptjs(withGoogleMap(({markers, onClick, onSearchBoxMounted, o
     return (
         <div>
             <GoogleMap
-                defaultZoom={8}
+                defaultZoom={19}
                 center={center}
                 onClick={onClick}
-            >   
+            >
                     <SearchBox
                         ref={onSearchBoxMounted}
                         controlPosition={google.maps.ControlPosition.TOP_CENTER}
