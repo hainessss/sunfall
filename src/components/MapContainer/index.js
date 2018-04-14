@@ -79,7 +79,7 @@ class MapContainer extends React.Component {
                 <Map
                     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                     loadingElement={<div style={{ height: `100%` }} />}
-                    containerElement={<div style={{ height: `600px` }} />}
+                    containerElement={<div style={{ height: `465px`, cursor: 'pointer' }} />}
                     mapElement={<div style={{ height: `100%` }} />}
                     onClick={this.onClick}
                     markers={markers}
