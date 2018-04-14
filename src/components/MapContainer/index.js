@@ -17,7 +17,7 @@ class MapContainer extends React.Component {
 
         this.state = {
             markers: [],
-            center: { lat: -34.397, lng: 150.644 }
+            center: { lat: 37.445833, lng: -122.131139 }
         }
     }
 
@@ -60,7 +60,7 @@ class MapContainer extends React.Component {
 
         // Transforming a single coordinate
         // TODO: Add to a list and transform only when full list is sent.
-        transformCoordinateList([coordiante]);
+        transformCoordinateList([coordinate]);
 
         this.setState({
             markers: markers.concat([
