@@ -105,8 +105,28 @@ const transformCoordinateList = coordinateList => {
 };
 
 const sendCoordinateListToMLServer = () => {
-  // TODO: Send coordinate list to ML server.
   console.log('LOG: Sending coordinate list to ML server', transformedCoordinateList.length);
+
+  // TODO: Send coordinate list to ML server.
+  // In the meantime mocking return response.``
+  const mockResponseList = [];
+  const ROOF_TYPES = ['Metal', 'Comp Shingle', 'Flat Tile', 'Round Tile'];
+  for (const coord of transformedCoordinateList) {
+    const rand0to3 = Math.floor(Math.random() * 3);
+    const isPool = Math.floor(Math.random() * 2) ? true : false;
+    const isSolar = Math.floor(Math.random() * 2) ? true : false;
+
+    const mockResponseObject = {
+       lat: coord.lat,
+       lng: coord.lng,
+       isPool,
+       roofType: ROOF_TYPES[rand0to3],
+       isSolar,
+    };
+    mockResponseList.push(mockResponseObject);
+  }
+  console.log('LOG: Returning a MOCK RESPONSE until endpoint is up.', mockResponseList);
+  return mockResponseList;
 }
 
 module.exports.transformCoordinateList = transformCoordinateList;
