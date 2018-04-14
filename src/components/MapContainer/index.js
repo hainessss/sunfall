@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './index.css';
 import PropTypes from 'prop-types';
 import Map from '../Map';
+import get from 'lodash/get';
 const { transformCoordinateList } = require('../../utils/coordinateTransformer');
 
 /**
@@ -14,8 +15,9 @@ class MapContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state= {
-            markers: []
+        this.state = {
+            markers: [],
+            center: { lat: -34.397, lng: 150.644 }
         }
     }
 
@@ -28,7 +30,20 @@ class MapContainer extends React.Component {
     }
 
     onPlacesChanged = () => {
+        const {center} = this.state;
 
+        let places = this.searchBox.getPlaces();
+
+        places = places.map(place => ({
+          position: place.geometry.location,
+        }));
+
+        const nextCenter = get(places, '0.position', center);
+
+        this.setState({
+            center: nextCenter,
+            markers: []
+        })
     }
 
 
@@ -58,7 +73,7 @@ class MapContainer extends React.Component {
     }
 
     render() {
-        const {markers} = this.state;
+        const {markers, center} = this.state;
 
         return (
                 <Map
@@ -70,6 +85,7 @@ class MapContainer extends React.Component {
                     markers={markers}
                     onSearchBoxMounted={this.onSearchBoxMounted}
                     onPlacesChanged={this.onPlacesChanged}
+                    center={center}
                 />
         );
     }
