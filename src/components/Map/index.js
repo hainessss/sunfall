@@ -3,8 +3,10 @@ import classnames from 'classnames';
 import styles from './index.css';
 import { withScriptjs, GoogleMap, Marker, withGoogleMap } from "react-google-maps";
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import { InfoWindow } from "react-google-maps";
 const { SearchBox } = require("react-google-maps/lib/components/places/SearchBox");
 const { sendCoordinateListToMLServer } = require('../../utils/coordinateTransformer');
+
 
 const Map = withScriptjs(withGoogleMap(({markers, onClick, onSearchBoxMounted, onPlacesChanged, center}) => {
     return (
@@ -39,7 +41,11 @@ const Map = withScriptjs(withGoogleMap(({markers, onClick, onSearchBoxMounted, o
                 <Marker position={{ lat: -34.397, lng: 150.644 }} />
                 {
                     markers.map((marker, index) => {
-                        return <Marker key={index} position={{ lat: marker.lat, lng: marker.lng }} />
+                        return <Marker key={index} onclick={() => {console.log('index' , index)}} position={{ lat: marker.lat, lng: marker.lng }}>
+                            <InfoWindow>
+                                <div>asdf</div>
+                            </InfoWindow>
+                        </Marker>
                     })
                 }
             </GoogleMap>
